@@ -1,3 +1,5 @@
+import manim
+
 from imports import *
 
 __all__ = ['GeneralGroupDefinition']
@@ -99,6 +101,7 @@ class GeneralGroupDefinition(Scene):
         associativity_equation.submobjects[8].fill_color = manim.BLUE
         associativity_equation.submobjects[10].fill_color = manim.YELLOW
         self.add(associativity, associativity_equation)
+        self.add(manim.BraceText(table_id, 'Operation table of group', brace_direction=RIGHT))
 
 
 if __name__ == '__main__':

@@ -1,3 +1,5 @@
+import manim
+
 import polyhedron_image_2d
 from imports import *
 
@@ -52,15 +54,30 @@ class CopyingDecoration(manim.Scene):
                                                'vertex_config': {'fill_opacity': 0.0, 'stroke_opacity': 0.0}})
         tetrahedron = polyhedron_image_2d.get_polyhedron_image(tetra, 1.3, -1.8)
         notched = VGroup(dashed_tetrahedron, tetrahedron).scale(2.0).shift(RIGHT * 2.5)
-        notched.add(manim.Tex('$0$', fill_color=manim.YELLOW).scale(1.4).next_to(dashed_tetrahedron[0][0].points[0],
+        vertex0 = dashed_tetrahedron[0][0].points[0]
+        vertex1 = dashed_tetrahedron[0][0].points[4]
+        vertex2 = dashed_tetrahedron[0][0].points[8]
+        vertex3 = dashed_tetrahedron[0][1].points[8]
+        notched.add(manim.Tex('$0$', fill_color=manim.ORANGE).scale(1.4).next_to(vertex0,
                                                                                  RIGHT + DOWN, buff=manim.SMALL_BUFF),
-                    manim.Tex('$1$', fill_color=manim.YELLOW).scale(1.4).next_to(dashed_tetrahedron[0][0].points[4],
-                                                                                 RIGHT + UP, buff=manim.SMALL_BUFF),
-                    manim.Tex('$2$', fill_color=manim.YELLOW).scale(1.4).next_to(dashed_tetrahedron[0][0].points[8],
-                                                                                 LEFT + DOWN, buff=manim.SMALL_BUFF),
-                    manim.Tex('$3$', fill_color=manim.YELLOW).scale(1.4).next_to(dashed_tetrahedron[0][1].points[8],
+                    manim.Tex('$1$', fill_color=manim.RED).scale(1.4).next_to(vertex1,
+                                                                              RIGHT + UP, buff=manim.SMALL_BUFF),
+                    manim.Tex('$2$', fill_color=manim.BLUE).scale(1.4).next_to(vertex2,
+                                                                               LEFT + DOWN, buff=manim.SMALL_BUFF),
+                    manim.Tex('$3$', fill_color=manim.YELLOW).scale(1.4).next_to(vertex3,
                                                                                  LEFT + UP, buff=manim.SMALL_BUFF))
         self.add(notched)
+        arrow_0_3 = manim.Arrow(vertex0, vertex3, stroke_color=manim.YELLOW,
+                                stroke_width=manim.DEFAULT_STROKE_WIDTH * 1.5).set_z_index(10.0)
+        arrow_2_3 = manim.Arrow(vertex2, vertex1, stroke_color=manim.YELLOW,
+                                stroke_width=manim.DEFAULT_STROKE_WIDTH * 1.5).set_z_index(-10.0)
+        arrow_0_2 = manim.CurvedArrow(vertex0, vertex2, stroke_color=manim.BLUE, angle=-1.4,
+                                      stroke_width=manim.DEFAULT_STROKE_WIDTH * 1.5)
+        arrow_3_2 = manim.CurvedArrow(vertex3, vertex1, stroke_color=manim.BLUE, angle=-1.3,
+                                      stroke_width=manim.DEFAULT_STROKE_WIDTH * 1.5)
+        label_0 = manim.MathTex('2\\cdot', fill_color=manim.BLUE).scale(1.3).next_to(arrow_0_2, DOWN, buff=0.1)
+        label_3 = manim.MathTex('2\\cdot', fill_color=manim.BLUE).scale(1.3).next_to(arrow_3_2, UP, buff=0.1)
+        self.add(arrow_0_3, arrow_2_3, arrow_0_2, arrow_3_2, label_0, label_3)
         line = manim.Line(RIGHT * 2.5 + UP * 1.5, LEFT * 1.5 + UP * 1.5)
         line.add_line_to(LEFT * 1.5 + DOWN * 2.5)
         tex0 = manim.Tex('$0$').scale(1.4)
