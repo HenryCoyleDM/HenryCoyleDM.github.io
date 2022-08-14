@@ -2,5 +2,16 @@
   <body id="page">
     <p>When you were introduced to groups, you were probably told that they represent the symmetries of an object. There are a bunch of actions you can take on the shape that leave it looking the same, symmetries, and doing them one after another leads to a special structure called a group.</p>
     <img src="/IntroductionToGroups_ManimCE_v0.15.2.png">
+    <p>Later, you were probably told that a group is more generally any set with a binary operation with closure, identity, inverse, and associativity. The group is only defined by its multiplication table; the symbols in it don&#39t necessarily have to have their usual meaning.</p>
+    <img src="/GeneralGroupDefinition_ManimCE_v0.15.2.png">
+    <p>So can every group be represented by the symmetries of an object? That would be a much more concrete and easier way to visualise the group. This question actually leads straight into representation theory, a way to represent abstract concepts like groups with easier concepts like matrices.</p>
+    <p>First, why do the symmetries of an object make a group? The set of symmetries of an object are all of the transformations of space of some type, usually isometries, that leave the object looking the same. The group operation is the result of composing two transformations: doing them one after another. It&#39s important to realise that the elements of the group are movements of the object, not orientations.</p>
+    <img src="/CompositionOfTransformations.gif">
+    <p>If you do something that makes the object look the same, and then another thing that makes it look the same, it’s going to look the same. Doing them together is a symmetry, too. That’s closure.</p>
+    <p>Doing three things to an object is going to do the same thing as doing two things, where one of the things is just doing the first two things. That&#39s associativity.</p>
+    <p>If you do something and the action is unchanged, then if you do it in reverse, the object is still unchanged. The reverse is a symmetry, too. That&#39s the inverse.</p>
+    <p>And finally, you can do nothing, and nothing happens to the object, so it’s a symmetry. That&#39s identity.</p>
+    <p>These kinds of groups are called symmetry groups. Our question is: is any finite group G the symmetry group of some object, say a polytope? The answer is yes, and we can show two different ways to do it.</p>
+    <p>We want to map every element of the group to a way to move the object. For the mapping to be useful, we want it to actually describe the structure of the group. That means that the group operation should do the same thing whether applied to the group elements, or their physical realisations. It’s a group homomorphism from the group to the group of all transformations of the object.</p>
   </body>
 </html>
